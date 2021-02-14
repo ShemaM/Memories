@@ -1,5 +1,6 @@
 import express from 'express';
 import { config } from 'dotenv';
+import bodyParser from 'body-parser';
 import cors from 'cors';
 import { connectDB } from './config/db';
 import routes from './routes/Posts';
@@ -9,7 +10,9 @@ connectDB();
 
 const app = express();
 
-app.use(express.json());
+// app.use(express.json());
+app.use(bodyParser.json({ limit: '100mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '100mb', extended: true }));
 app.use(cors());
 
 app.use('/posts', routes);
