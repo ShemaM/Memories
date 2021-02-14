@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use('/api/v1', routes);
+app.use('/posts', routes);
 
 const { PORT } = process.env;
 
